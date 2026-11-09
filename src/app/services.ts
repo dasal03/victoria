@@ -19,3 +19,14 @@ export const logistics = [
 { name: 'Masajes postquirúrgicos', image: 'massage', description: 'Acompañamiento durante el proceso de recuperación, según la valoración y las indicaciones de tu equipo tratante.' },
 ];
 export const whatsapp = 'https://wa.me/573004418000?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20una%20valoraci%C3%B3n%20en%20Victoria.';
+export const phones = [
+  { label: '+57 300 441 8000', href: 'tel:+573004418000' },
+  { label: '+57 324 612 8888', href: 'tel:+573246128888' },
+];
+export const instagram = { handle: '@victoria_h_h_s', href: 'https://www.instagram.com/victoria_h_h_s/' };
+export const navLinks = [
+  { label: 'Especialidades', href: '/especialidades' },
+  { label: 'Experiencia del paciente', href: '/experiencia' },
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Contacto', href: '/contacto' },
+];
