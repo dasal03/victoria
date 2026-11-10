@@ -1,40 +1,43 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { instagram, phones, whatsapp } from '../services';
-import { Arrow } from './icons';
+import { instagram, navLinks, phones, whatsapp } from '../services';
+import { Arrow, InstagramIcon, WhatsAppIcon } from './icons';
+
+const photos = ['stay', 'massage', 'food', 'travel'];
 
 export default function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="container">
+      <div className="footer-card">
         <div className="footer-top">
-          <p className="footer-statement">El cuidado continúa. <em>Estemos cerca.</em></p>
-          <a className="btn btn-light" href={whatsapp} target="_blank" rel="noopener noreferrer">Escríbenos por WhatsApp <Arrow /></a>
+          <div className="footer-cta">
+            <p className="footer-statement">¿Empezamos a <em>cuidarte?</em></p>
+            <p>Tu experiencia empieza con una conversación.</p>
+            <a className="btn btn-light" href={whatsapp} target="_blank" rel="noopener noreferrer">Escríbenos por WhatsApp <Arrow /></a>
+          </div>
+          <a className="footer-handle" href={instagram.href} target="_blank" rel="noopener noreferrer">{instagram.handle}</a>
+          <ul className="footer-photos" aria-hidden="true">
+            {photos.map(name => <li key={name}><Image className="photo" src={`/images/${name}.jpg`} alt="" fill sizes="(max-width: 900px) 25vw, 12vw" /></li>)}
+          </ul>
         </div>
         <div className="footer-cols">
           <div className="footer-about">
             <p className="footer-brand">Victoria<small>Home Health &amp; Spa</small></p>
             <p>Medicina y bienestar. Una experiencia pensada alrededor de ti.</p>
-            <p className="label footer-city"><span className="dot" aria-hidden="true" />Barranquilla, Colombia</p>
+          </div>
+          <div>
+            <p className="label">Contacto</p>
+            <p>Barranquilla, Colombia</p>
+            {phones.map(p => <a key={p.href} href={p.href}>{p.label}</a>)}
           </div>
           <nav aria-label="Pie de página">
             <p className="label">Explora</p>
             <Link href="/">Inicio</Link>
-            <Link href="/nosotros">Nuestra esencia</Link>
-            <Link href="/especialidades">Especialidades</Link>
-            <Link href="/experiencia">Experiencia del paciente</Link>
-            <Link href="/contacto">Contacto</Link>
+            {navLinks.map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}
           </nav>
-          <div>
-            <p className="label">Nuestro cuidado</p>
-            <Link href="/especialidades">Servicios médicos</Link>
-            <Link href="/experiencia">Alojamiento y alimentación</Link>
-            <Link href="/experiencia">Traslados y acompañamiento</Link>
-            <Link href="/experiencia">Recuperación postquirúrgica</Link>
-          </div>
-          <div>
-            <p className="label">Conversemos</p>
-            {phones.map(p => <a key={p.href} className="footer-phone" href={p.href}>{p.label}</a>)}
-            <a href={instagram.href} target="_blank" rel="noopener noreferrer">{instagram.handle} <span aria-hidden="true">↗</span></a>
+          <div className="footer-social">
+            <a href={instagram.href} target="_blank" rel="noopener noreferrer" aria-label={`Instagram ${instagram.handle}`}><InstagramIcon /></a>
+            <a href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WhatsAppIcon /></a>
           </div>
         </div>
         <div className="footer-bottom">

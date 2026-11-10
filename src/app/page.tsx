@@ -1,6 +1,5 @@
-import { Contact, Experience, Hero, Intro, Journey } from './_components/sections';
-import Specialties from './_components/Specialties';
+import { Experience, Gallery, Hero, ImageBand, Intro, Reviews, SpecialtyCards, SpecialtyCircles, Statement } from './_components/sections';
 
 export default function Home() {
-  return <><Hero /><Intro /><Specialties /><Experience /><Journey /><Contact /></>;
+  return <><Hero /><Statement /><Intro /><SpecialtyCards /><ImageBand /><SpecialtyCircles /><Gallery /><Reviews /><Experience /></>;
 }

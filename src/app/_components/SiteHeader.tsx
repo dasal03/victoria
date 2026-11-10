@@ -3,22 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { navLinks, phones, specialties, whatsapp } from '../services';
+import { instagram, navLinks, phones, specialties, whatsapp } from '../services';
 import { Arrow } from './icons';
 
 export default function SiteHeader() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   useEffect(() => { setOpen(false); }, [pathname]);
 
@@ -47,30 +39,33 @@ export default function SiteHeader() {
     };
   }, [open]);
 
+  const overHero = ['/', '/especialidades', '/experiencia', '/contacto'].includes(pathname) && !open;
+  const className = ['site-header', overHero && 'is-over-hero', open && 'is-open'].filter(Boolean).join(' ');
+
   return (
-    <header ref={headerRef} className={`site-header${scrolled || open || pathname !== '/' ? ' is-solid' : ''}${open ? ' is-open' : ''}`}>
+    <header ref={headerRef} className={className}>
       <div className="container header-inner">
         <Link className="brand" href="/" aria-label="Victoria Home Health & Spa, inicio">
           <span>Victoria</span><small>Home Health &amp; Spa</small>
         </Link>
-        <nav className="header-nav" aria-label="Principal">
-          {navLinks.map(link => <Link key={link.href} href={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}
-        </nav>
-        <div className="header-actions">
-          <a className="btn btn-dark header-cta" href={whatsapp} target="_blank" rel="noopener noreferrer">Solicitar valoración</a>
-          <button ref={toggleRef} className="menu-toggle" type="button" aria-expanded={open} aria-controls="menu-principal" onClick={() => setOpen(v => !v)}>
-            <span className="menu-lines" aria-hidden="true"><span /><span /></span>
-            {open ? 'Cerrar' : 'Menú'}
-          </button>
+        <div className="header-meta">
+          <a href={phones[0].href}>{phones[0].label}</a>
+          <a href={instagram.href} target="_blank" rel="noopener noreferrer">{instagram.handle}</a>
         </div>
+        <button ref={toggleRef} className="burger" type="button" aria-label={open ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={open} aria-controls="menu-principal" onClick={() => setOpen(v => !v)}>
+          <span aria-hidden="true" /><span aria-hidden="true" />
+        </button>
       </div>
       {open && (
         <div id="menu-principal" className="menu-panel" role="dialog" aria-modal="true" aria-label="Menú principal">
           <div className="container menu-grid">
             <nav aria-label="Menú principal">
               <ul className="menu-links">
-                <li><Link href="/" aria-current={pathname === '/' ? 'page' : undefined}><span>01</span>Inicio</Link></li>
-                {navLinks.map((link, i) => <li key={link.href}><Link href={link.href} aria-current={pathname === link.href ? 'page' : undefined}><span>{String(i + 2).padStart(2, '0')}</span>{link.label}</Link></li>)}
+                {[{ label: 'Inicio', href: '/' }, ...navLinks].map((link, i) => (
+                  <li key={link.href} style={{ '--i': i } as React.CSSProperties}>
+                    <Link href={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>
+                  </li>
+                ))}
               </ul>
             </nav>
             <aside className="menu-aside">

@@ -1,6 +1,26 @@
 export function Arrow() {
-  return <svg className="icon-arrow" viewBox="0 0 32 20" fill="none" aria-hidden="true"><path d="M1 10h28M21 2l8 8-8 8" stroke="currentColor" strokeWidth="1.3" /></svg>;
+  return <svg className="icon-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 10h12.5M11 5l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>;
 }
 export function WhatsAppIcon() {
   return <svg className="icon-wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.2-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 5.83 2.42 8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.47-.28Z" /></svg>;
+}
+export function ArrowUpRight() {
+  return <svg className="icon-up-right" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M6 4.5h5.5V10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+}
+export function InstagramIcon() {
+  return <svg className="icon-social" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.6" /><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" /><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" /></svg>;
+}
+/** Original fine-line botanical sprig used as an inline ornament. */
+export function Sprig() {
+  return (
+    <svg className="sprig" viewBox="0 0 60 104" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M29 102C29.5 78 31 50 35 8" />
+      <path d="M29.6 84C18 81 11.5 71 13.5 62C22 64.5 28 72 29.6 84Z" /><path d="M29.6 84C22 76 17 68 13.5 62" />
+      <path d="M30.4 72C42 68.5 48.5 58 46.5 49.5C38 52 32 59.5 30.4 72Z" /><path d="M30.4 72C37 63 42 55.5 46.5 49.5" />
+      <path d="M31.2 58C20 54 15.5 44 17.5 35.5C25.5 38.5 30.5 46 31.2 58Z" /><path d="M31.2 58C25.5 50 21 42 17.5 35.5" />
+      <path d="M32.3 46C43 42 48 32 46 24.5C38 27 33.5 34.5 32.3 46Z" /><path d="M32.3 46C38 38 42 30.5 46 24.5" />
+      <path d="M33.4 31C25 27.5 21.5 19.5 23.5 12.5C30 15.5 33.5 22 33.4 31Z" /><path d="M33.4 31C29.5 24.5 26.5 18 23.5 12.5" />
+      <path d="M34.6 19C40.5 15.5 43 9 41.5 3.5C36.5 5.5 34.5 11 34.6 19Z" />
+    </svg>
+  );
 }

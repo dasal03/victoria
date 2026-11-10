@@ -30,3 +30,11 @@ export const navLinks = [
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Contacto', href: '/contacto' },
 ];
+
+/**
+ * Patient testimonials. Only real reviews, published with the patient's permission.
+ * While this list is empty the reviews section shows clearly-marked examples in development
+ * and is hidden in production.
+ */
+/** `photo`: a URL or /images path, only with the patient's consent. */
+export const testimonials: { quote: string; name: string; photo?: string }[] = [];

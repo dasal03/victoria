@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { specialties, whatsapp } from '../services';
 import { Arrow } from './icons';
 
@@ -20,22 +19,15 @@ export default function Specialties({ as: Heading = 'h2' }: { as?: 'h1' | 'h2' }
     return () => window.removeEventListener('hashchange', fromHash);
   }, []);
 
-  const current = specialties[active];
   return (
     <section className="section specialties" aria-labelledby="services-title">
-      <div className="container">
-        <div className="section-head" data-reveal>
-          <div>
-            <p className="label">Especialidades · Un cuidado, muchas formas</p>
-            <Heading id="services-title" className="h2">El cuidado <em>que necesitas.</em></Heading>
-          </div>
+      <div className="container spec-layout">
+        <aside className="spec-aside" data-reveal>
+          <Heading id="services-title" className="h2">Elige tu <em>especialidad</em></Heading>
           <p>Explora nuestras áreas de atención. Cada camino comienza con una valoración individual.</p>
-        </div>
-        <div className="explorer">
-          <figure className="explorer-visual arch">
-            <Image key={current.image + active} className="photo fade-in" src={`/images/${current.image}.jpg`} alt={`Atención en ${current.name.toLowerCase()}`} fill sizes="(max-width: 900px) 92vw, 38vw" />
-            <figcaption><span>{String(active + 1).padStart(2, '0')} / {String(specialties.length).padStart(2, '0')}</span>{current.name}</figcaption>
-          </figure>
+          <a className="btn btn-dark" href={whatsapp} target="_blank" rel="noopener noreferrer">Solicitar valoración <Arrow /></a>
+          <p className="fine-print">Los procedimientos y tratamientos se definen con el especialista según la valoración de cada paciente. Consulta disponibilidad y condiciones de atención.</p>
+        </aside>
           <ul className="accordion">
             {specialties.map((service, i) => {
               const open = active === i;
@@ -43,7 +35,6 @@ export default function Specialties({ as: Heading = 'h2' }: { as?: 'h1' | 'h2' }
                 <li key={service.name} id={`especialidad-${i + 1}`} className={`acc-item${open ? ' is-open' : ''}`}>
                   <h3>
                     <button type="button" id={`acc-btn-${i}`} aria-expanded={open} aria-controls={`acc-panel-${i}`} onClick={() => setActive(i)}>
-                      <span className="acc-index">{String(i + 1).padStart(2, '0')}</span>
                       <span className="acc-title">{service.name}</span>
                       <span className="acc-icon" aria-hidden="true" />
                     </button>
@@ -59,8 +50,6 @@ export default function Specialties({ as: Heading = 'h2' }: { as?: 'h1' | 'h2' }
               );
             })}
           </ul>
-        </div>
-        <p className="fine-print">Los procedimientos y tratamientos se definen con el especialista según la valoración de cada paciente. Consulta disponibilidad y condiciones de atención.</p>
       </div>
     </section>
   );
