@@ -35,6 +35,9 @@
   --focus: var(--color-gold-ink);
 
   /* Tipografía */
+  /* Títulos: Noto Serif Display, la alternativa libre más cercana a Victoria Two
+     Display (tipografía corporativa de victoriassecret.com, no licenciable) */
+  --f-title: 'Noto Serif Display Variable', 'Noto Serif Display', 'Times New Roman', serif;
   --f-display: 'Louize Display', 'Times New Roman', Georgia, serif;
   --f-serif: 'Times New Roman', Times, Georgia, serif;
   --f-beausite: 'Beausite Classic', 'Hanken Grotesk Variable', system-ui, sans-serif;

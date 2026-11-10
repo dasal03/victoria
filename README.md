@@ -19,6 +19,7 @@ Dependencias añadidas y por qué:
 | Dependencia | Motivo |
 |---|---|
 | `react-router-dom` | URLs reales por página (`/especialidades/ginecologia`, etc.) |
+| `@fontsource-variable/noto-serif-display` | Fuente de títulos (estilo Victoria's Secret), servida localmente |
 | `@fontsource-variable/hanken-grotesk` | Sans servida localmente, en lugar de Beausite Classic (ver Tipografía) |
 | `playwright` (dev) | Capturas y pruebas de interacción en distintas resoluciones |
 
@@ -72,7 +73,8 @@ botones y párrafos, y **Beausite Classic** (Fatype, 400/500, versión *WebTrial
 
 | Rol | Fuente | Estado |
 |---|---|---|
-| Titulares, menú, botones (`--f-display`) | Louize Display | Archivo entregado por el cliente en `public/fonts/`. Solo regular: la cursiva la sintetiza el navegador. |
+| Títulos (`--f-title`: h1, h2, hero, CTA final, frase del footer) | Noto Serif Display (OFL) | Alternativa libre más cercana a Victoria Two Display, la tipografía corporativa de victoriassecret.com (hecha a medida, no licenciable). Peso 330, anchura 90%. |
+| Menú, botones y wordmark (`--f-display`) | Louize Display | Archivo entregado por el cliente en `public/fonts/`. Solo regular: la cursiva la sintetiza el navegador. |
 | Párrafos (`--f-serif`) | Times New Roman | Fuente de sistema. |
 | Columnas del footer (`--f-beausite`) | Beausite Classic | Archivo de prueba **sin tildes ni ñ** ("Cirugía" se ve "Cirugıa"); el cliente aceptó usarlo así en el footer. |
 | Subtítulos y resto de la UI (`--f-sans`) | Hanken Grotesk (sustituta) | Sustituye a Beausite donde las tildes son críticas, hasta tener el archivo completo con licencia. |
@@ -82,7 +84,7 @@ Conviene pedir también `LouizeDisplay-Italic` para sustituir la cursiva sinteti
 
 Lenguaje tipográfico:
 
-- **Titulares** (`.h1`, `.h2`, `.display`): Louize en MAYÚSCULAS, con las palabras de enlace en *cursiva minúscula* (`<em>`), como "*The* STORY *of the* NAME". Los títulos que vienen de datos pasan por `<MixedTitle>`, que aplica el patrón solo.
+- **Titulares** (`.h1`, `.h2`, `.display`): Noto Serif Display en MAYÚSCULAS completas y **sin cursiva** (decisión del cliente, 2026-11-04). Los `<em>` que quedan en el marcado se ven igual que el resto del título.
 - **Descripciones:** subtítulo sans en mayúsculas y peso medio (`.h3`) + párrafo serif en negro (`.body`).
 - **Sin rótulos pequeños** (número + etiqueta en versalitas) en ninguna sección.
 
@@ -115,3 +117,4 @@ Las marcas **"Por validar"** muestran en pantalla lo que falta. Se ocultan con `
 10. **Textos legales:** política de tratamiento de datos (Ley 1581 de 2012) y aviso de privacidad.
 11. **Copy:** todos los textos son propuestas pendientes de aprobación, incluido el titular "El arte de cuidar de ti". No se prometen resultados médicos.
 12. **SEO:** el título, la descripción y el canonical se fijan por página en el cliente. Si se necesita un SEO más fuerte, conviene prerenderizar (SSG).
+13. **Testimonios** (`content/testimonials.ts`): los cuatro testimonios del inicio (nombres, textos, calificaciones y retratos de stock) son **inventados para el prototipo** y solo se muestran en modo de revisión (`VITE_SHOW_PENDING`). Sustituir por testimonios reales con autorización escrita del paciente y marcar `placeholder: false`.

@@ -1,4 +1,4 @@
-import type { MediaSlot } from './media';
+import { media, type MediaSlot } from './media';
 
 /**
  * Inventario de especialidades — fuente: catálogo de servicios 2021–2022.
@@ -56,6 +56,7 @@ export const specialties: Specialty[] = [
       'Un área que abarca procedimientos estéticos y reconstructivos. Cada caso comienza con una valoración en la que se revisan expectativas, alternativas y condiciones del paciente.',
     procedures: [],
     status: 'pending',
+    image: media.specPlastica,
     featuredOnHome: true,
   },
   {
@@ -67,6 +68,7 @@ export const specialties: Specialty[] = [
       'Cirugía orientada al manejo del peso cuando el criterio médico lo considera adecuado. La indicación siempre depende de una valoración profesional.',
     procedures: [],
     status: 'pending',
+    image: media.specBariatrica,
     featuredOnHome: true,
   },
   {
@@ -77,6 +79,7 @@ export const specialties: Specialty[] = [
     intro: 'Atención quirúrgica general, desde la valoración inicial hasta la orientación sobre los siguientes pasos.',
     procedures: [],
     status: 'pending',
+    image: media.specGeneral,
   },
   {
     slug: 'ortopedia',
@@ -86,6 +89,7 @@ export const specialties: Specialty[] = [
     intro: 'Valoración de condiciones del sistema musculoesquelético y orientación sobre alternativas de manejo.',
     procedures: [],
     status: 'pending',
+    image: media.specOrtopedia,
     featuredOnHome: true,
   },
   {
@@ -97,6 +101,7 @@ export const specialties: Specialty[] = [
       'Consulta orientada al bienestar y al envejecimiento saludable. Las alternativas disponibles se definen en consulta, según las necesidades de cada persona.',
     procedures: [],
     status: 'pending',
+    image: media.specAntiaging,
     featuredOnHome: true,
   },
   {
@@ -107,6 +112,7 @@ export const specialties: Specialty[] = [
     intro: 'Atención de la salud ginecológica con un trato cercano y respetuoso.',
     procedures: [],
     status: 'pending',
+    image: media.specGinecologia,
     featuredOnHome: true,
   },
   {
@@ -117,6 +123,7 @@ export const specialties: Specialty[] = [
     intro: 'Un área dedicada a valorar el dolor y a orientar sobre las alternativas de manejo disponibles.',
     procedures: [],
     status: 'pending',
+    image: media.specDolor,
   },
   {
     slug: 'odontologia',
@@ -126,6 +133,7 @@ export const specialties: Specialty[] = [
     intro: 'Consulta odontológica y orientación sobre tratamientos de salud oral.',
     procedures: [],
     status: 'pending',
+    image: media.specOdontologia,
   },
   {
     slug: 'imagenologia',
@@ -135,6 +143,7 @@ export const specialties: Specialty[] = [
     intro: 'Estudios de imagen que apoyan la valoración y el seguimiento médico.',
     procedures: [],
     status: 'pending',
+    image: media.specImagenologia,
   },
 ];
 

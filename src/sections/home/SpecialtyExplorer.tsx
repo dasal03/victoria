@@ -1,29 +1,17 @@
 import type { CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
-import { Arrow, Button } from '../../components/Button';
+import { Button } from '../../components/Button';
 import { SpecialtyCard } from '../../components/SpecialtyCard';
-import { media } from '../../content/media';
-import {
-  featuredSpecialtySlug,
-  groupOrder,
-  groups,
-  specialties,
-  specialtiesByGroup,
-  specialtyPath,
-} from '../../content/specialties';
+import { groupOrder, groups, specialties, specialtiesByGroup } from '../../content/specialties';
 import './SpecialtyExplorer.css';
 
+/** Las 9 especialidades en una sola sección: cada una con su imagen y su texto debajo. */
 export function SpecialtyExplorer() {
-  const selection = specialties.filter((s) => s.featuredOnHome && s.slug !== featuredSpecialtySlug);
-  const [lead, ...rest] = selection;
-  const others = specialties.filter((s) => !selection.includes(s));
-
   return (
     <section id="especialidades" className="explorer section" aria-labelledby="explorer-title">
       <div className="explorer__grid container">
         <header className="explorer__head">
           <h2 id="explorer-title" className="h2" data-reveal style={{ '--reveal-i': 1 } as CSSProperties}>
-            Encuentra <em>la atención que</em> necesitas.
+            Encuentra la atención que necesitas.
           </h2>
         </header>
 
@@ -37,29 +25,15 @@ export function SpecialtyExplorer() {
               </li>
             ))}
           </ul>
-          <Button to="/especialidades" variant="secondary" arrow>
+          <Button to="/especialidades" variant="secondary">
             Ver todas las especialidades
           </Button>
         </div>
 
         <div className="explorer__cards">
-          {lead && <SpecialtyCard specialty={lead} index={0} variant="feature" image={media.specialtyLead} className="explorer__lead" />}
-          {rest.map((s, i) => (
-            <SpecialtyCard key={s.slug} specialty={s} index={i + 1} />
+          {specialties.map((s, i) => (
+            <SpecialtyCard key={s.slug} specialty={s} index={i % 3} variant="feature" image={s.image} />
           ))}
-          <div className="explorer__index" data-reveal style={{ '--reveal-i': rest.length + 1 } as CSSProperties}>
-            <h3 className="h3">Más especialidades</h3>
-            <ul role="list">
-              {others.map((s) => (
-                <li key={s.slug}>
-                  <Link to={specialtyPath(s.slug)}>
-                    {s.name}
-                    <Arrow />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </section>

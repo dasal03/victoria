@@ -136,28 +136,29 @@ textarea {
 }
 
 /* ---------- Tipografía ----------
- * Lenguaje de la referencia: titulares serif en MAYÚSCULAS con palabras en
- * cursiva y minúscula (<em>) que marcan el ritmo. El texto se escribe en
- * minúsculas normales; la transformación es solo visual. */
+ * Títulos: serif en MAYÚSCULAS completas y sin cursiva. Los <em> que quedan
+ * en el marcado se muestran igual que el resto del título. El texto se escribe
+ * en minúsculas normales; la transformación es solo visual. */
 
 .display,
 .h1,
 .h2,
 .hero-title {
-  font-family: var(--f-display);
-  font-weight: 400;
+  font-family: var(--f-title);
+  font-weight: 330;
+  font-stretch: 90%;
   text-transform: uppercase;
-  letter-spacing: var(--ls-display);
+  letter-spacing: -0.005em;
 }
 
 .display em,
 .h1 em,
 .h2 em,
 .hero-title em {
-  font-style: italic;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: -0.005em;
+  font-style: normal;
+  font-weight: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
 }
 
 .h1 {

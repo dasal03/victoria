@@ -80,11 +80,91 @@ export const media = {
     tone: 'ink',
     reference: ref('1563170446-9c3c0622d8a9', '6eFmG1qWxJI', 'Olena Bohovyk', '45% 40%'),
   },
-  specialtyLead: {
+  /* Una imagen independiente por especialidad (sección Especialidades) */
+  specPlastica: {
     alt: 'Retrato natural de una mujer con luz suave',
-    brief: 'Consulta de valoración: conversación, gesto, sin instrumental quirúrgico.',
+    brief: 'Consulta de valoración en cirugía plástica: conversación, gesto, sin instrumental quirúrgico.',
     tone: 'stone',
     reference: ref('1643932919088-53349a7c3385', 'k8AWNNCry-0', 'see plus', '45% 30%'),
+  },
+  specBariatrica: {
+    alt: 'Mujer vestida de blanco descansando en un sofá crema con luz cálida',
+    brief: 'Bienestar y vitalidad; sin cuerpos antes/después ni mensajes sobre el peso.',
+    tone: 'ink',
+    reference: ref('1769256618547-0f7a4b25ec61', 'EouDcfj0Owc', 'Vadim Yefremov', '50% 55%'),
+  },
+  specGeneral: {
+    alt: 'Mano descansando sobre una superficie negra',
+    brief: 'Detalle de cuidado: manos del equipo, sin instrumental ni quirófano.',
+    tone: 'ink',
+    reference: ref('1640215708038-745c57e4d512', '_mXwYGqMDR8', 'Sam Badmaeva', '50% 55%'),
+  },
+  specOrtopedia: {
+    alt: 'Bailarina en movimiento sobre fondo oscuro',
+    brief: 'Movimiento y articulaciones: gesto atlético o de danza.',
+    tone: 'ink',
+    reference: ref('1597754298097-fb51c3ec8ac8', '0mqcCmuWNlc', 'Alexander Jawfox', '50% 35%'),
+  },
+  specAntiaging: {
+    alt: 'Primer plano de un rostro con un haz de luz cálida',
+    brief: 'Piel con textura natural y luz cálida; sin promesas de resultado.',
+    tone: 'ink',
+    reference: ref('1551184451-76b762941ad6', 'b2bXKspL5MY', 'Kamila Maciejewska', '50% 45%'),
+  },
+  specGinecologia: {
+    alt: 'Retrato de perfil de una mujer con luz cálida',
+    brief: 'Retrato sereno y respetuoso; trato cercano.',
+    tone: 'ink',
+    reference: ref('1575000998090-b1ceb12a9aa1', 'OHxW268bcMY', 'Marshal Quast', '50% 35%'),
+  },
+  specDolor: {
+    alt: 'Mano apoyada sobre el cuello, en blanco y negro',
+    brief: 'Gesto de alivio o cuidado; sin dramatizar el dolor.',
+    tone: 'stone',
+    reference: ref('1574107063326-75c9ceb48938', 'vG8eLBOfrLU', 'Mimipic Photography', '50% 40%'),
+  },
+  specOdontologia: {
+    alt: 'Mujer sonriendo, en blanco y negro',
+    brief: 'Sonrisa natural, encuadre editorial; sin instrumental odontológico.',
+    tone: 'stone',
+    reference: ref('1544457073-505b76b886de', 'mthxHfkQIEs', 'Alexander Krivitskiy', '50% 40%'),
+  },
+  specImagenologia: {
+    alt: 'Ondas abstractas de luz dorada sobre fondo oscuro',
+    brief: 'Abstracción de la imagen diagnóstica; equipos reales solo si están verificados.',
+    tone: 'ink',
+    reference: ref('1685625971503-ef1f82128939', 'V8_m9CZwzgw', 'Visax', '50% 50%'),
+  },
+  /* Retratos de testimonios PROVISIONALES (prototipo): personas de stock, no pacientes reales */
+  reviewLaura: {
+    alt: 'Retrato de una mujer sonriendo',
+    brief: 'Retrato de paciente real que haya autorizado su testimonio e imagen.',
+    tone: 'ivory',
+    reference: ref('1573294705900-9623cfc746b7', 'COOrCB6qqO0', 'Mehran Hadad', '50% 30%'),
+  },
+  reviewDaniela: {
+    alt: 'Retrato de una mujer sonriendo sobre fondo oscuro',
+    brief: 'Retrato de paciente real que haya autorizado su testimonio e imagen.',
+    tone: 'ink',
+    reference: ref('1593207129063-c99ebcf14ea4', 'YYg7LYcqJgM', 'hesam Link', '50% 30%'),
+  },
+  reviewValentina: {
+    alt: 'Retrato sereno de una mujer sobre fondo gris',
+    brief: 'Retrato de paciente real que haya autorizado su testimonio e imagen.',
+    tone: 'stone',
+    reference: ref('1667053508464-eb11b394df83', 'JRa8lCQQhSs', 'Dmitry Ganin', '50% 30%'),
+  },
+  reviewCamila: {
+    alt: 'Retrato natural de una mujer sobre fondo claro',
+    brief: 'Retrato de paciente real que haya autorizado su testimonio e imagen.',
+    tone: 'ivory',
+    reference: ref('1533933269825-da140ad3132f', 'oifclaPX5oM', 'Matt Reiter', '50% 30%'),
+  },
+  howItWorks: {
+    alt: 'Manos juntas en penumbra',
+    brief: 'Primera conversación con el equipo: gesto de escucha y acompañamiento.',
+    tone: 'ink',
+    reference: ref('1664829406355-d5ea0a3561fd', 'JUUtIjPqUtU', 'Mahdi Bafande', '50% 45%'),
   },
   lodging: {
     alt: 'Habitación en penumbra con lámpara de luz cálida',

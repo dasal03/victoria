@@ -130,8 +130,8 @@
 
 .site-menu__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
   gap: var(--s-6) var(--gutter);
   min-height: calc(100% - var(--header-h));
   padding-top: clamp(1rem, 0.5rem + 2vw, 3rem);
@@ -142,7 +142,6 @@
 
 .site-menu__primary {
   grid-column: 1;
-  grid-row: 1 / 4;
 }
 
 .site-menu__primary ol {
@@ -217,61 +216,6 @@
   background: currentColor;
 }
 
-/* ---------- Columna derecha ---------- */
-
-.site-menu__contact {
-  grid-column: 2;
-  grid-row: 1;
-  display: grid;
-  justify-items: end;
-  text-align: right;
-  font-size: 1.1875rem;
-  line-height: 1.3;
-}
-
-.site-menu__contact .pending {
-  margin-top: var(--s-3);
-  justify-content: flex-end;
-}
-
-.site-menu__secondary {
-  grid-column: 2;
-  grid-row: 3;
-  display: grid;
-  gap: var(--s-5);
-  justify-items: end;
-  text-align: right;
-}
-
-.site-menu__secondary ul {
-  display: grid;
-  justify-items: end;
-}
-
-.site-menu__secondary li a {
-  display: inline-flex;
-  padding-block: 3px;
-  font-size: 1.1875rem;
-  font-style: italic;
-  line-height: 1.25;
-  color: var(--color-gray-ink);
-  transition: color 0.3s var(--ease-out);
-}
-
-.site-menu__secondary li a:hover {
-  color: var(--color-black);
-}
-
-.site-menu__legal {
-  gap: 2px;
-}
-
-.site-menu__legal a {
-  font-family: var(--f-sans);
-  font-size: 0.8125rem !important;
-  font-style: normal !important;
-}
-
 .site-menu__actions {
   display: none;
 }
@@ -279,34 +223,6 @@
 /* ---------- Tablet y móvil ---------- */
 
 @media (max-width: 900px) {
-  .site-menu__grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .site-menu__primary,
-  .site-menu__contact,
-  .site-menu__secondary {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .site-menu__contact,
-  .site-menu__secondary,
-  .site-menu__secondary ul {
-    justify-items: start;
-    text-align: left;
-  }
-
-  .site-menu__contact .pending {
-    justify-content: flex-start;
-  }
-
-  .site-menu__secondary {
-    padding-top: var(--s-5);
-    border-top: 1px solid var(--color-border);
-  }
-
   .site-menu__actions {
     display: grid;
     gap: var(--s-3);

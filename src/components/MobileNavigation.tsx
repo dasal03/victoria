@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ctaLabels, legalNav, primaryNav, site, whatsappHref } from '../content/site';
-import { specialties, specialtyPath } from '../content/specialties';
+import { NavLink, useLocation } from 'react-router-dom';
+import { ctaLabels, primaryNav, whatsappHref } from '../content/site';
 import { Button, RollText } from './Button';
-import { PendingNote } from './Pending';
 import './MobileNavigation.css';
 
 type Props = { open: boolean; onClose: () => void };
@@ -101,37 +99,6 @@ export function SiteMenu({ open, onClose }: Props) {
               })}
             </ol>
           </nav>
-
-          <div className="site-menu__contact">
-            <p>Contacto:</p>
-            <p>
-              {site.city}, {site.country}
-            </p>
-            {site.contact.phone && <a href={`tel:${site.contact.phone.replace(/\s/g, '')}`}>{site.contact.phone}</a>}
-            {site.contact.email && <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>}
-            {!site.contact.phone && !site.contact.email && <PendingNote>Teléfono y correo oficiales.</PendingNote>}
-          </div>
-
-          <div className="site-menu__secondary">
-            <ul role="list" aria-label="Especialidades">
-              {specialties.map((s) => (
-                <li key={s.slug}>
-                  <Link to={specialtyPath(s.slug)} onClick={onClose} className="roll-host">
-                    <RollText>{s.name}</RollText>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <ul role="list" aria-label="Información legal" className="site-menu__legal">
-              {legalNav.map((l) => (
-                <li key={l.to}>
-                  <Link to={l.to} onClick={onClose}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           <div className="site-menu__actions">
             <Button to="/contacto#valoracion" arrow>

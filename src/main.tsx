@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 
 import '@fontsource-variable/hanken-grotesk/index.css';
+import '@fontsource-variable/noto-serif-display/standard.css';
+import '@fontsource-variable/noto-serif-display/standard-italic.css';
 
 import './styles/fonts.css';
 import './styles/tokens.css';

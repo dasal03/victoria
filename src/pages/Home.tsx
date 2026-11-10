@@ -6,7 +6,7 @@ import { FeaturedService } from '../sections/home/FeaturedService';
 import { HowItWorks } from '../sections/home/HowItWorks';
 import { PatientExperience } from '../sections/home/PatientExperience';
 import { SpecialtyExplorer } from '../sections/home/SpecialtyExplorer';
-import { TrustTeam } from '../sections/home/TrustTeam';
+import { Testimonials } from '../sections/home/Testimonials';
 
 export default function Home() {
   usePageMeta({ path: '/' });
@@ -18,7 +18,7 @@ export default function Home() {
       <FeaturedService />
       <PatientExperience />
       <HowItWorks />
-      <TrustTeam />
+      <Testimonials />
       <ContactCTA />
     </>
   );
