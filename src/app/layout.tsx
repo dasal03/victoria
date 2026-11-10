@@ -6,6 +6,7 @@ import WhatsAppFloat from './_components/WhatsAppFloat';
 import RevealObserver from './_components/RevealObserver';
 import './globals.css';
 
+// Respaldo de la fuente principal (Season Serif, declarada en globals.css).
 const serif = Playfair_Display({ subsets: ['latin'], weight: ['400', '500', '600'], style: ['normal', 'italic'], variable: '--font-serif', display: 'swap' });
 const sans = Manrope({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-sans', display: 'swap' });
 

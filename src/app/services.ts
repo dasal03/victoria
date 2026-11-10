@@ -37,4 +37,4 @@ export const navLinks = [
  * and is hidden in production.
  */
 /** `photo`: a URL or /images path, only with the patient's consent. */
-export const testimonials: { quote: string; name: string; photo?: string }[] = [];
+export const testimonials: { quote: string; name: string; service?: string; photo?: string }[] = [];

@@ -3,3 +3,6 @@ node_modules/
 out/
 *.tsbuildinfo
 .env*
+
+# Season Serif: licencia de prueba (uso personal), no se publica en el repositorio
+public/fonts/season/

@@ -7,20 +7,9 @@ export function WhatsAppIcon() {
 export function ArrowUpRight() {
   return <svg className="icon-up-right" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M6 4.5h5.5V10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>;
 }
+export function Check() {
+  return <svg className="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+}
 export function InstagramIcon() {
   return <svg className="icon-social" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.6" /><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" /><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" /></svg>;
-}
-/** Original fine-line botanical sprig used as an inline ornament. */
-export function Sprig() {
-  return (
-    <svg className="sprig" viewBox="0 0 60 104" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M29 102C29.5 78 31 50 35 8" />
-      <path d="M29.6 84C18 81 11.5 71 13.5 62C22 64.5 28 72 29.6 84Z" /><path d="M29.6 84C22 76 17 68 13.5 62" />
-      <path d="M30.4 72C42 68.5 48.5 58 46.5 49.5C38 52 32 59.5 30.4 72Z" /><path d="M30.4 72C37 63 42 55.5 46.5 49.5" />
-      <path d="M31.2 58C20 54 15.5 44 17.5 35.5C25.5 38.5 30.5 46 31.2 58Z" /><path d="M31.2 58C25.5 50 21 42 17.5 35.5" />
-      <path d="M32.3 46C43 42 48 32 46 24.5C38 27 33.5 34.5 32.3 46Z" /><path d="M32.3 46C38 38 42 30.5 46 24.5" />
-      <path d="M33.4 31C25 27.5 21.5 19.5 23.5 12.5C30 15.5 33.5 22 33.4 31Z" /><path d="M33.4 31C29.5 24.5 26.5 18 23.5 12.5" />
-      <path d="M34.6 19C40.5 15.5 43 9 41.5 3.5C36.5 5.5 34.5 11 34.6 19Z" />
-    </svg>
-  );
 }

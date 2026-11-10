@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { logistics, phones, instagram, specialties, testimonials, whatsapp } from '../services';
-import { Arrow, ArrowUpRight, Sprig, WhatsAppIcon } from './icons';
+import { Arrow, ArrowUpRight, Check, WhatsAppIcon } from './icons';
 
 type HeadingLevel = { as?: 'h1' | 'h2' };
 // Provisional Unsplash photos (free licence) until Victoria supplies its own photography.
@@ -12,17 +12,20 @@ const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
 export function Hero() {
   return (
     <div className="hero-frame">
-      <section className="hero" aria-labelledby="hero-title">
+      <section className="hero hero-home" aria-labelledby="hero-title">
         <Image className="hero-bg photo" src={heroPhoto} alt="" fill priority sizes="100vw" />
         <div className="hero-shade" aria-hidden="true" />
+        {/* Título abajo a la izquierda; texto y botones abajo a la derecha */}
         <div className="container hero-inner">
-          <div className="hero-aside">
-            <p>Atención médica y bienestar, con una experiencia pensada alrededor de cada persona.</p>
-            <a className="btn btn-outline-light" href={whatsapp} {...external}>Solicitar valoración <Arrow /></a>
-          </div>
           <div className="hero-title">
             <h1 id="hero-title" className="display">El arte de <em>cuidar de ti.</em></h1>
-            <p className="hero-tagline">Medicina, bienestar y cuidado en Barranquilla.</p>
+          </div>
+          <div className="hero-aside">
+            <p>Atención médica y bienestar, con una experiencia pensada alrededor de cada persona.</p>
+            <div className="hero-actions">
+              <a className="btn" href={whatsapp} {...external}>Solicitar valoración <Arrow /></a>
+              <Link className="btn" href="/especialidades">Ver especialidades <Arrow /></Link>
+            </div>
           </div>
         </div>
       </section>
@@ -46,7 +49,7 @@ export function Statement() {
   return (
     <section className="section statement">
       <div className="container">
-        <p className="statement-text" data-reveal>Hay decisiones que merecen <em>sentirse acompañadas</em>. Por eso reunimos servicios médicos y logísticos <span className="nowrap-lg">diseñados <span className="nowrap"><span className="sprig-wrap"><Sprig /></span> <strong>a tu medida</strong>.</span></span></p>
+        <p className="statement-text" data-reveal>Hay decisiones que merecen sentirse acompañadas. Por eso reunimos servicios médicos y logísticos diseñados a tu medida.</p>
       </div>
     </section>
   );
@@ -84,20 +87,36 @@ export function SpecialtyCards() {
           <h2 id="services-title" className="h2">Nuestras <em>especialidades</em></h2>
           <p>Explora nuestras áreas de atención. Cada camino comienza con una valoración individual.</p>
         </div>
-        <ul className="cards">
+        {/* Bloques a dos columnas que alternan imagen y contenido (referencia Numeris) */}
+        <div className="spec-rows">
           {featured.map(({ index, label }, i) => {
             const s = specialties[index];
+            const checks = i % 2 === 1;
             return (
-              <li key={s.name} data-reveal style={{ '--i': i } as React.CSSProperties}>
-                <Link className="card" href={`/especialidades#especialidad-${index + 1}`}>
-                  <Image className="photo" src={`/images/${s.image}.jpg`} alt="" fill sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 24vw" />
-                  <span className="card-pill">{label}</span>
-                  <span className="card-arrow" aria-hidden="true"><ArrowUpRight /></span>
-                </Link>
-              </li>
+              <article key={s.name} className={`spec-row${i % 2 ? ' is-flipped' : ''}`} data-reveal>
+                <div className="spec-row-media">
+                  <Image className="photo" src={`/images/${s.image}.jpg`} alt="" fill sizes="(max-width: 900px) 92vw, 50vw" />
+                </div>
+                <div className="spec-row-body">
+                  <h3 className="spec-row-title">{label}</h3>
+                  <ul className={`spec-row-list${checks ? ' is-checks' : ''}`}>
+                    {s.items.slice(0, 3).map((item, n) => (
+                      <li key={item}>
+                        {checks && <Check />}
+                        <span>{item}</span>
+                        {!checks && <span className="spec-row-num">{String(n + 1).padStart(2, '0')}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="spec-row-foot">
+                    <p>{s.description}</p>
+                    <Link className="btn" href={`/especialidades#especialidad-${index + 1}`}>Conocer más <Arrow /></Link>
+                  </div>
+                </div>
+              </article>
             );
           })}
-        </ul>
+        </div>
         <Link href="/especialidades" className="text-link services-more">Ver las {specialties.length} especialidades <Arrow /></Link>
       </div>
     </section>
@@ -134,7 +153,6 @@ export function Experience({ as: Heading = 'h2', full = false }: HeadingLevel & 
   return (
     <section className="section rituals" aria-labelledby="experience-title">
       <div className="container">
-        {!full && <Link href="/experiencia" className="more-link">Ver más detalles</Link>}
         <div className="rituals-head" data-reveal>
           <Heading id="experience-title" className="h2">{full ? <>Más allá de tu <em>procedimiento</em></> : <>Experiencia del <em>paciente</em></>}</Heading>
           <p className="rituals-lede">Tú te concentras en tu bienestar <span className="inline-photo inline-face" aria-hidden="true"><Image className="photo" src={facePhoto} alt="" fill sizes="96px" /></span> y nosotros, en cada detalle de tu estancia.</p>
@@ -218,36 +236,62 @@ export function Gallery() {
 
 const u = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=700&h=900&q=70`;
 const exampleReviews = [
-  { quote: 'Aquí irá el testimonio real de una paciente, publicado con su autorización.', name: 'Nombre por confirmar', photo: u('1662850886700-4ec19bd30d11') },
-  { quote: 'Ejemplo de reseña: reemplazar por un comentario real de Google o Instagram.', name: 'Nombre por confirmar', photo: u('1607569708758-0270aa4651bd') },
-  { quote: 'Ejemplo de reseña: reemplazar por un comentario real de una paciente.', name: 'Nombre por confirmar', photo: u('1594756154841-ac5d160dbf46') },
-  { quote: 'Ejemplo de reseña: reemplazar por un comentario real de una paciente.', name: 'Nombre por confirmar', photo: u('1772249541659-a034b3360f19') },
-  { quote: 'Ejemplo de reseña: reemplazar por un comentario real de una paciente.', name: 'Nombre por confirmar', photo: u('1772989665252-7cb41ae759cc') },
+  { quote: 'Ejemplo de testimonio: aquí irá la opinión real de una paciente sobre su valoración, publicada con su autorización.', name: 'Nombre por confirmar', service: 'Cirugía plástica', photo: u('1662850886700-4ec19bd30d11') },
+  { quote: 'Ejemplo de reseña: reemplazar por un comentario real de Google o Instagram.', name: 'Nombre por confirmar', service: 'Medicina antiaging', photo: u('1607569708758-0270aa4651bd') },
+  { quote: 'Ejemplo de reseña: reemplazar por un comentario real de una paciente.', name: 'Nombre por confirmar', service: 'Ortopedia', photo: u('1594756154841-ac5d160dbf46') },
+  { quote: 'Ejemplo de reseña: reemplazar por un comentario real de una paciente.', name: 'Nombre por confirmar', service: 'Ginecología', photo: u('1772249541659-a034b3360f19') },
+  { quote: 'Ejemplo de reseña: reemplazar por un comentario real de una paciente.', name: 'Nombre por confirmar', service: 'Acompañamiento', photo: u('1772989665252-7cb41ae759cc') },
 ];
 
-/** Reference: "Client reviews". Photo by default, testimonial on hover/focus. Real testimonials only; examples never reach production. */
+type Review = { quote: string; name: string; service?: string; photo?: string };
+
+/** Tarjeta de testimonio: blanca con texto, ancha con foto + texto, o solo foto (patrón alterno). */
+function ReviewCard({ r, kind }: { r: Review; kind: 'text' | 'wide' | 'photo' }) {
+  const text = (
+    <div className="rv-text">
+      <div className="rv-head">
+        <p className="rv-title">{r.service ?? 'Victoria'}</p>
+        <span className="rv-tag">Paciente</span>
+      </div>
+      <blockquote>{r.quote}</blockquote>
+      <p className="rv-who"><strong>{r.name}</strong> Barranquilla</p>
+    </div>
+  );
+  if (kind === 'photo' && r.photo) {
+    return <li className="rv-card rv-photo"><Image className="photo" src={r.photo} alt="" fill sizes="320px" /></li>;
+  }
+  if (kind === 'wide' && r.photo) {
+    return (
+      <li className="rv-card rv-wide">
+        <div className="rv-wide-media"><Image className="photo" src={r.photo} alt="" fill sizes="320px" /></div>
+        {text}
+      </li>
+    );
+  }
+  return <li className="rv-card">{text}</li>;
+}
+
+/**
+ * Testimonios en fila con desplazamiento horizontal automático (se pausa al pasar el cursor).
+ * Solo testimonios reales; los ejemplos se ven en desarrollo y nunca llegan a producción.
+ */
 export function Reviews() {
   const isExample = testimonials.length === 0;
   if (isExample && process.env.NODE_ENV === 'production') return null;
-  const items = (isExample ? exampleReviews : testimonials).slice(0, 5);
+  const items: Review[] = isExample ? exampleReviews : testimonials;
+  const kinds: ('text' | 'wide' | 'photo')[] = ['text', 'wide', 'photo', 'text', 'wide'];
+  const row = (hidden?: boolean) => (
+    <ul className="rv-row" aria-hidden={hidden || undefined}>
+      {items.map((r, i) => <ReviewCard key={i} r={r} kind={kinds[i % kinds.length]} />)}
+    </ul>
+  );
   return (
     <section className="section reviews" aria-labelledby="reviews-title">
       <div className="container">
         <h2 id="reviews-title" className="h2 reviews-title" data-reveal>Lo que dicen <em>nuestros pacientes</em></h2>
-        {isExample && <p className="example-note">Contenido de ejemplo (textos y fotos), visible solo en desarrollo. Agrega testimonios reales en <code>services.ts</code>.</p>}
-        <ul className="reviews-grid">
-          {items.map((r, i) => (
-            <li key={i} className="review" tabIndex={0} data-reveal style={{ '--i': i } as React.CSSProperties}>
-              {r.photo && <Image className="photo" src={r.photo} alt={`Foto de ${r.name}`} fill sizes="(max-width: 640px) 92vw, 20vw" />}
-              <span className="review-name">{r.name}</span>
-              <div className="review-body">
-                <span className="review-mark" aria-hidden="true">“</span>
-                <blockquote>{r.quote}</blockquote>
-                <cite>{r.name}</cite>
-              </div>
-            </li>
-          ))}
-        </ul>
+      </div>
+      <div className="rv-marquee">
+        <div className="rv-track">{row()}{row(true)}</div>
       </div>
     </section>
   );

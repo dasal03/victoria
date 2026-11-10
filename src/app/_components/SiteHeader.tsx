@@ -3,8 +3,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { instagram, navLinks, phones, specialties, whatsapp } from '../services';
-import { Arrow } from './icons';
+import { navLinks, specialties, whatsapp } from '../services';
+import { WhatsAppIcon } from './icons';
+
+/** Nombre corto de cada especialidad para el menú. */
+function shortName(name: string) {
+  return name.replace(', estética y reconstructiva', '').replace('Medicina antiaging', 'Antiaging');
+}
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -48,35 +53,41 @@ export default function SiteHeader() {
         <Link className="brand" href="/" aria-label="Victoria Home Health & Spa, inicio">
           <span>Victoria</span><small>Home Health &amp; Spa</small>
         </Link>
-        <div className="header-meta">
-          <a href={phones[0].href}>{phones[0].label}</a>
-          <a href={instagram.href} target="_blank" rel="noopener noreferrer">{instagram.handle}</a>
-        </div>
         <button ref={toggleRef} className="burger" type="button" aria-label={open ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={open} aria-controls="menu-principal" onClick={() => setOpen(v => !v)}>
-          <span aria-hidden="true" /><span aria-hidden="true" />
+          {open && <span className="burger-label" aria-hidden="true">Cerrar</span>}
+          <span className="burger-icon" aria-hidden="true"><span /><span /></span>
         </button>
       </div>
       {open && (
         <div id="menu-principal" className="menu-panel" role="dialog" aria-modal="true" aria-label="Menú principal">
-          <div className="container menu-grid">
-            <nav aria-label="Menú principal">
-              <ul className="menu-links">
-                {[{ label: 'Inicio', href: '/' }, ...navLinks].map((link, i) => (
-                  <li key={link.href} style={{ '--i': i } as React.CSSProperties}>
-                    <Link href={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>
+          {/* Cada especialidad como una palabra grande que fluye en el panel; los enlaces
+              principales y el contacto quedan en una fila pequeña abajo. */}
+          <div className="container menu-stage">
+            <nav aria-label="Especialidades">
+              <ul className="menu-words">
+                {specialties.map((s, i) => (
+                  <li key={s.name} style={{ '--i': i } as React.CSSProperties}>
+                    <span className="menu-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                    <Link href={`/especialidades#especialidad-${i + 1}`}>{shortName(s.name)}</Link>
+                    {i === 4 && <span className="menu-dash" aria-hidden="true" />}
                   </li>
                 ))}
               </ul>
             </nav>
-            <aside className="menu-aside">
-              <p className="label">Especialidades</p>
-              <ul className="menu-specialties">
-                {specialties.map((s, i) => <li key={s.name}><Link href={`/especialidades#especialidad-${i + 1}`}>{s.name}</Link></li>)}
-              </ul>
-              <p className="label">Conversemos</p>
-              {phones.map(p => <a key={p.href} className="menu-phone" href={p.href}>{p.label}</a>)}
-              <a className="btn btn-light" href={whatsapp} target="_blank" rel="noopener noreferrer">Escríbenos por WhatsApp <Arrow /></a>
-            </aside>
+            <div className="menu-foot">
+              <nav aria-label="Menú principal">
+                <ul className="menu-pages">
+                  {[{ label: 'Inicio', href: '/' }, ...navLinks].map(link => (
+                    <li key={link.href}>
+                      <Link href={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <div className="menu-contact">
+                <a className="btn" href={whatsapp} target="_blank" rel="noopener noreferrer">Escríbenos por WhatsApp <WhatsAppIcon /></a>
+              </div>
+            </div>
           </div>
         </div>
       )}
