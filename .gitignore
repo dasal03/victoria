@@ -1,29 +1,8 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-dist-preview
-
-# Fuentes comerciales sin licencia: no se publican en el repositorio
-public/fonts/*.woff2
-public/fonts/*.woff
+# Season Serif: licencia de prueba (uso personal), no se publica en el repositorio
+public/fonts/season/
